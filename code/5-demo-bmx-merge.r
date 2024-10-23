@@ -29,3 +29,25 @@ bmx_demo <- bmx_data |>
 glimpse(bmx_demo)
 head(bmx_demo)
 
+#merge in data about whether participant is in the sample with accel data and bmx data
+sample_flag <- read_csv("../data/derived/sample.csv")
+glimpse(sample_flag)
+names(sample_flag)
+
+#check flags ans create a new one called in_sample
+sample_flag |> distinct(has_Accel)
+sample_flag |> distinct(has_BMI)
+sample_flag$in_sample <- 1
+sample_flag1 <- sample_flag |>
+	select(PID, in_sample) |>
+	rename(seqn=PID)
+
+#merge in sample to bmx data and demo data
+bmx_demo1 <- bmx_demo |>
+	left_join(sample_flag1) |>
+	relocate(seqn, in_sample) |>
+	mutate(in_sample=coalesce(in_sample,0))
+glimpse(bmx_demo1)
+
+#change NAs to 0
+
