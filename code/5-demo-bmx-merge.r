@@ -42,12 +42,12 @@ sample_flag1 <- sample_flag |>
 	select(PID, in_sample) |>
 	rename(seqn=PID)
 
-#merge in sample to bmx data and demo data
+#merge and clean in sample to bmx data and demo data
 bmx_demo1 <- bmx_demo |>
 	left_join(sample_flag1) |>
 	relocate(seqn, in_sample) |>
 	mutate(in_sample=coalesce(in_sample,0))
 glimpse(bmx_demo1)
 
-#change NAs to 0
-
+#export and save the dataset
+write_csv(bmx_demo1, "../data/derived/bmx_demo_data.csv")
