@@ -1,0 +1,53 @@
+host: Shaminie
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job         count
+--------  -------
+all             1
+checking        1
+cleaning        1
+total           3
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Oct 31 16:18:21 2024]
+localrule cleaning:
+    input: data/original/accel
+    output: logs/log2.txt
+    jobid: 2
+    reason: Missing output files: logs/log2.txt
+    resources: tmpdir=/tmp
+
+
+[Thu Oct 31 16:18:21 2024]
+localrule checking:
+    input: data/original/BMX_D.csv, data/original/accel
+    output: logs/log1.txt
+    jobid: 1
+    reason: Missing output files: logs/log1.txt
+    resources: tmpdir=/tmp
+
+[Thu Oct 31 16:20:26 2024]
+Finished job 2.
+1 of 3 steps (33%) done
+[Thu Oct 31 16:21:41 2024]
+Finished job 1.
+2 of 3 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Oct 31 16:21:41 2024]
+localrule all:
+    input: logs/log1.txt, logs/log2.txt
+    jobid: 0
+    reason: Input files updated by another job: logs/log2.txt, logs/log1.txt
+    resources: tmpdir=/tmp
+
+[Thu Oct 31 16:21:41 2024]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2024-10-31T161821.124774.snakemake.log

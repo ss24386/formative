@@ -4,6 +4,7 @@ channels:
   - defaults
 dependencies:
   - r-base=4.4.1
-  - r-tidyverse=2.0.0
   - r-janitor=2.2.0
-prefix: /home/shaminie/miniconda3/envs/formative
+  - r-tidyverse=2.0.0
+  - bioconda::snakemake
+prefix: /home/shaminie/miniforge3/envs/formative

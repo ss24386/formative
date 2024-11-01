@@ -1,0 +1,1 @@
+{"record_format_version": 4, "code": "\n\tcd code\n\tbash 3-PIDs-list.sh \n\t", "rule": "pids_list", "input": ["data/derived/accel"], "log": [], "params": [], "shellcmd": "\n\tcd code\n\tbash 3-PIDs-list.sh \n\t", "incomplete": false, "starttime": null, "endtime": 1730392129.1105278, "job_hash": 8780887345871, "conda_env": null, "container_img_url": null, "input_checksums": {}}
